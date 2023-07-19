@@ -233,7 +233,10 @@ with tab2:
         # Filtrar las columnas relevantes
         df_filtered = data[['País', 'Total Damage ($Mil)']]
 
-        # Calcular el total de daño en dólares para cada país
+        # Filtrar los datos según el rango de años seleccionado
+        df_filtered = data[(data['Year'] >= rango_anios[0]) & (data['Year'] <= rango_anios[1])]
+
+        # Calcular el total de daño en dólares para cada país con los datos filtrados
         total_damage = df_filtered.groupby('País')['Total Damage ($Mil)'].sum()
 
         # Crear una lista de colores personalizados para cada país
