@@ -138,7 +138,7 @@ elif paises == 'México':
     data = data_mex
     zoom = 4
     anio = aniomex
-    mm = mmjp
+    mm = mmmex
     sismos_por_anio = sismos_por_aniomex
 else:
     top_loc = top_loc_usa
