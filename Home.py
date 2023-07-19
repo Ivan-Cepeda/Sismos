@@ -268,8 +268,11 @@ with tab2:
         # Filtrar las columnas relevantes
         df_filtered = data[['País', 'Deaths']]
 
-        # Calcular el total de muertos para cada país
-        total_deaths = df_filtered.groupby('País')['Deaths'].sum()
+        # Filtrar los datos según el rango de años seleccionado
+        df_filtered = data[(data['Year'] >= rango_anios[0]) & (data['Year'] <= rango_anios[1])]
+
+        # Calcular el total de muertos para cada país con los datos filtrados
+        total_deaths = df_filtered.groupby('País')['Deaths'].sum() 
 
         # Crear una lista de colores personalizados para cada país
         colores_paises = {'Japón': 'red', 'México': 'green', 'Estados Unidos': 'blue'}
