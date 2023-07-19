@@ -328,7 +328,10 @@ with tab2:
         # Filtrar las columnas relevantes
         df_filtered = data[['País', 'Total Injuries', 'Deaths']]
 
-        # Apilar los valores de las columnas 'Total Injuries' y 'Deaths' en una sola columna llamada 'Cantidad'
+        # Filtrar los datos según el rango de años seleccionado
+        df_filtered = data[(data['Year'] >= rango_anios[0]) & (data['Year'] <= rango_anios[1])]
+
+        # Apilar los valores de las columnas 'Total Injuries' y 'Deaths' en una sola columna llamada 'Cantidad' con los datos filtrados
         df_melted = df_filtered.melt(id_vars='País', value_vars=['Total Injuries', 'Deaths'],
                                     var_name='Categoría', value_name='Cantidad')
 
