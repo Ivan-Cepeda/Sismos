@@ -24,5 +24,5 @@ st.markdown(" - En **Mexico** un sistema de sensores sísmicos distribuidos en e
 #Títulos h2
 st.markdown("## ¿Que hacer si estamos en una zona sísmica?")
 #Párrafo 3 
-st.markdown("## Cada país brinda información y prepara a la población, a continuación un ejemplo de *Campaña Preventiva* impulsada por el Gobierno de México.")
+st.markdown("# Cada país brinda información y prepara a la población, a continuación un ejemplo de *Campaña Preventiva* impulsada por el Gobierno de México.")
 st.markdown("<p><img src='http://www.gob.mx/cms/uploads/image/file/51446/Sismo.jpg'</p>", unsafe_allow_html=True)
