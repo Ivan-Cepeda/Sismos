@@ -299,7 +299,10 @@ with tab2:
         # Filtrar las columnas relevantes
         df_filtered = data[['País', 'Total Houses Damaged', 'Total Injuries']]
 
-        # Calcular el total de daño sufrido en las casas y la cantidad de heridos para cada país
+        # Filtrar los datos según el rango de años seleccionado
+        df_filtered = data[(data['Year'] >= rango_anios[0]) & (data['Year'] <= rango_anios[1])]
+
+        # Calcular el total de daño sufrido en las casas y la cantidad de heridos para cada país con los datos filtrados
         total_houses_damaged = df_filtered.groupby('País')['Total Houses Damaged'].sum()
         total_injuries = df_filtered.groupby('País')['Total Injuries'].sum()
 
