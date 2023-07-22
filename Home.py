@@ -138,7 +138,7 @@ elif paises == 'México':
     data = data_mex
     zoom = 4
     anio = aniomex
-    mm = mmjp
+    mm = mmmex
     sismos_por_anio = sismos_por_aniomex
 else:
     top_loc = top_loc_usa
@@ -233,7 +233,10 @@ with tab2:
         # Filtrar las columnas relevantes
         df_filtered = data[['País', 'Total Damage ($Mil)']]
 
-        # Calcular el total de daño en dólares para cada país
+        # Filtrar los datos según el rango de años seleccionado
+        df_filtered = data[(data['Year'] >= rango_anios[0]) & (data['Year'] <= rango_anios[1])]
+
+        # Calcular el total de daño en dólares para cada país con los datos filtrados
         total_damage = df_filtered.groupby('País')['Total Damage ($Mil)'].sum()
 
         # Crear una lista de colores personalizados para cada país
@@ -265,8 +268,11 @@ with tab2:
         # Filtrar las columnas relevantes
         df_filtered = data[['País', 'Deaths']]
 
-        # Calcular el total de muertos para cada país
-        total_deaths = df_filtered.groupby('País')['Deaths'].sum()
+        # Filtrar los datos según el rango de años seleccionado
+        df_filtered = data[(data['Year'] >= rango_anios[0]) & (data['Year'] <= rango_anios[1])]
+
+        # Calcular el total de muertos para cada país con los datos filtrados
+        total_deaths = df_filtered.groupby('País')['Deaths'].sum() 
 
         # Crear una lista de colores personalizados para cada país
         colores_paises = {'Japón': 'red', 'México': 'green', 'Estados Unidos': 'blue'}
@@ -293,7 +299,10 @@ with tab2:
         # Filtrar las columnas relevantes
         df_filtered = data[['País', 'Total Houses Damaged', 'Total Injuries']]
 
-        # Calcular el total de daño sufrido en las casas y la cantidad de heridos para cada país
+        # Filtrar los datos según el rango de años seleccionado
+        df_filtered = data[(data['Year'] >= rango_anios[0]) & (data['Year'] <= rango_anios[1])]
+
+        # Calcular el total de daño sufrido en las casas y la cantidad de heridos para cada país con los datos filtrados
         total_houses_damaged = df_filtered.groupby('País')['Total Houses Damaged'].sum()
         total_injuries = df_filtered.groupby('País')['Total Injuries'].sum()
 
@@ -319,7 +328,10 @@ with tab2:
         # Filtrar las columnas relevantes
         df_filtered = data[['País', 'Total Injuries', 'Deaths']]
 
-        # Apilar los valores de las columnas 'Total Injuries' y 'Deaths' en una sola columna llamada 'Cantidad'
+        # Filtrar los datos según el rango de años seleccionado
+        df_filtered = data[(data['Year'] >= rango_anios[0]) & (data['Year'] <= rango_anios[1])]
+
+        # Apilar los valores de las columnas 'Total Injuries' y 'Deaths' en una sola columna llamada 'Cantidad' con los datos filtrados
         df_melted = df_filtered.melt(id_vars='País', value_vars=['Total Injuries', 'Deaths'],
                                     var_name='Categoría', value_name='Cantidad')
 
